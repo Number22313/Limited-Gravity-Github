@@ -31,7 +31,7 @@ func _on_handle_death_body_entered(body):
 		self.queue_free()
 		chase = true
 
-
+#Shaking screen and sending player back to start when dead
 func _on_area_2d_body_entered(body):
 	print("dead")
 	if body.is_in_group("player"):
