@@ -35,7 +35,6 @@ collision_mask = 2
 
 [node name="jump death" type="CollisionShape2D" parent="handle death"]
 position = Vector2(1.29289, -25.7727)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_v1whc")
 
 [node name="Area2D" type="Area2D" parent="."]
