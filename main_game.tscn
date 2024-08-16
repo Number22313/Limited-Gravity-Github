@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xrk6d4nycsre"]
+[gd_scene load_steps=21 format=3 uid="uid://xrk6d4nycsre"]
 
 [ext_resource type="PackedScene" uid="uid://mdbkocuud6iq" path="res://player.tscn" id="1_01k2v"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="2_s8yc5"]
@@ -10,6 +10,20 @@
 [ext_resource type="PackedScene" uid="uid://b8grybdth3hx1" path="res://green_crystal.tscn" id="7_hjm5d"]
 [ext_resource type="Texture2D" uid="uid://bu3813ok0hx4e" path="res://Images/hearts v1.png" id="9_n1eoc"]
 [ext_resource type="Script" path="res://Sprite2D.gd" id="10_f3jp7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d137c"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_no7km"]
+offsets = PackedFloat32Array(0, 0.707792)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jsgdx"]
+gradient = SubResource("Gradient_no7km")
+width = 200
+height = 200
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wt648"]
 texture = ExtResource("3_temmw")
@@ -58,10 +72,38 @@ physics_layer_0/collision_mask = 5
 sources/1 = SubResource("TileSetAtlasSource_wt648")
 sources/5 = SubResource("TileSetAtlasSource_te8wv")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_meihd"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xno8t"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_7xs71"]
+offsets = PackedFloat32Array(0, 0.850649)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pnyoy"]
+gradient = SubResource("Gradient_7xs71")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Main Game" type="Node2D"]
+position = Vector2(0, 8)
 
 [node name="Player" parent="." instance=ExtResource("1_01k2v")]
+z_index = 99
+material = SubResource("CanvasItemMaterial_d137c")
 collision_layer = 6
+
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+z_index = 90
+position = Vector2(1, -8)
+scale = Vector2(2.82813, 2.82813)
+color = Color(0.0605303, 0.0605303, 0.0605303, 1)
+energy = 16.0
+texture = SubResource("GradientTexture2D_jsgdx")
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 offset = Vector2(0, -50)
@@ -96,12 +138,14 @@ position = Vector2(29, -10)
 motion_scale = Vector2(0.95, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.529067, 0.529067, 0.529067, 1)
 position = Vector2(-797, -186)
 rotation = 3.14159
 scale = Vector2(0.835069, 1)
 texture = ExtResource("5_nqvs4")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.529412, 0.529412, 0.529412, 1)
 position = Vector2(-797, -806)
 rotation = 3.14159
 scale = Vector2(0.835069, 1)
@@ -111,11 +155,13 @@ texture = ExtResource("5_nqvs4")
 motion_scale = Vector2(0.95, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+modulate = Color(0.529412, 0.529412, 0.529412, 1)
 position = Vector2(-774, -1338.49)
 scale = Vector2(1.38202, 1.2044)
 texture = ExtResource("6_pg2qp")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+modulate = Color(0.529412, 0.529412, 0.529412, 1)
 position = Vector2(-797, -976.96)
 rotation = 3.14159
 scale = Vector2(0.835069, 0.544107)
@@ -126,6 +172,7 @@ offset = Vector2(0, 700)
 z_index = -5
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer3"]
+modulate = Color(0.529412, 0.529412, 0.529412, 1)
 z_index = -995
 offset_left = -1256.0
 offset_top = -1540.0
@@ -135,24 +182,35 @@ size_flags_horizontal = 4
 color = Color(0.0117647, 0.231373, 0.00392157, 1)
 
 [node name="enemy" parent="." node_paths=PackedStringArray("camera", "player") instance=ExtResource("6_pr2oj")]
+material = SubResource("CanvasItemMaterial_meihd")
 position = Vector2(-324, -219)
 camera = NodePath("../Player/Camera2D2")
 player = NodePath("../Player")
 
 [node name="green crystal" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("7_hjm5d")]
 z_index = -1
+material = SubResource("CanvasItemMaterial_xno8t")
 position = Vector2(-1113, -1183)
 collision_layer = 4
 collision_mask = 4
 camera = NodePath("../Player/Camera2D2")
 
+[node name="PointLight2D" type="PointLight2D" parent="green crystal"]
+z_index = 9
+position = Vector2(1, 2.38419e-07)
+scale = Vector2(2.75, 2.75)
+color = Color(0, 0.148241, 0, 1)
+energy = 10.0
+shadow_color = Color(0, 1, 0, 1)
+texture = SubResource("GradientTexture2D_pnyoy")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+[node name="Health1" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(40, 40)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("9_n1eoc")
 script = ExtResource("10_f3jp7")
 
-[connection signal="PlayerDies" from="enemy" to="CanvasLayer/Sprite2D" method="_on_enemy_player_dies"]
+[connection signal="PlayerDies" from="enemy" to="CanvasLayer/Health1" method="_on_enemy_player_dies"]
 [connection signal="body_entered" from="green crystal" to="green crystal" method="_on_body_entered"]

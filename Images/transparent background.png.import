@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c51p0eheltc7b"
-path="res://.godot/imported/scary fence dog.png-45bc52140950fff5a0ee6f96eb9181e6.ctex"
+uid="uid://mubwm7drjbe8"
+path="res://.godot/imported/transparent background.png-caa62529b6045778294a44b2cf774791.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/scary fence dog.png"
-dest_files=["res://.godot/imported/scary fence dog.png-45bc52140950fff5a0ee6f96eb9181e6.ctex"]
+source_file="res://Images/transparent background.png"
+dest_files=["res://.godot/imported/transparent background.png-caa62529b6045778294a44b2cf774791.ctex"]
 
 [params]
 
