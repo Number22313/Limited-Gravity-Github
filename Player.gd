@@ -10,8 +10,6 @@ var jump_count = 0
 var max_jumps = 2
 var start_position = Vector2(-1000, -1200)
 
-signal PlayerDies
-
 func _physics_process(delta):
 	# Add the gravity.
 	if Input.is_action_just_pressed("stuff"):
