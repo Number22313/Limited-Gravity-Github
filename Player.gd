@@ -8,7 +8,7 @@ const JUMP_VELOCITY = -400
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jump_count = 0
 var max_jumps = 2
-var start_position = Vector2(-1000, -1200)
+var start_position = Vector2(1952, -928)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -33,9 +33,6 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-
-
-
 
 func _on_canvas_layer_playerdead():
 	self.global_position = Vector2(-99,0)

@@ -16,3 +16,4 @@ func _on_body_entered(body):
 		print("found")
 		self.queue_free()
 		camera.apply_shake(100,5)
+		$"Control2/Green Crystal".visibile = true

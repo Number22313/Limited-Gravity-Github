@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx5g8tlwqjtr8"]
+
+[sub_resource type="Gradient" id="Gradient_ofsre"]
+offsets = PackedFloat32Array(0.0844156, 1)
+colors = PackedColorArray(0.313726, 0, 0, 1, 1, 0.27, 0.27, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_74miy"]
+gradient = SubResource("Gradient_ofsre")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[node name="Dead" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(778, 778)
+scale = Vector2(24.4375, 24.4375)
+texture = SubResource("GradientTexture2D_74miy")
