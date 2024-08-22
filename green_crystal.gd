@@ -1,5 +1,5 @@
 extends Area2D
-
+#@export var green_crystal: Sprite2D
 @export var camera:Camera2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,4 +16,4 @@ func _on_body_entered(body):
 		print("found")
 		self.queue_free()
 		camera.apply_shake(100,5)
-		$"Control2/Green Crystal".visibile = true
+		#green_crystal.visibile = true

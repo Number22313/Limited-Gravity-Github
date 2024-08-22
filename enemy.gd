@@ -14,25 +14,25 @@ func _physics_process(delta):
 # Calculate direction towards player
 	if chase:
 		var direction = (player.global_position - global_position).normalized()
-
 		global_position += direction * SPEED * delta
-#USE AREA 2D to DETECT PLAYER
-
-		
+		var knockback = position.direction_to(player.position) * -500
+		velocity = knockback
 
 #func detectenemy():
 	#for body.get_overlapping_bodies():
+
+
+	
+#Shaking screen and sending player back to start when dead
+func _on_area_2d_body_entered(body):
+	print("dead")
+	if body.is_in_group("player"):
+		chase = true
+		#camera.apply_shake(100,5)
+		emit_signal("Playerhurt")
+
 
 func _on_handle_death_body_entered(body):
 	if body.is_in_group("player"):
 		self.queue_free()
 		chase = true
-
-#Shaking screen and sending player back to start when dead
-func _on_area_2d_body_entered(body):
-	print("dead")
-	if body.is_in_group("player"):
-		player.position = start_position2
-		chase = true
-		camera.apply_shake(100,5)
-		emit_signal("Playerhurt")

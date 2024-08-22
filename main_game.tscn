@@ -202,6 +202,7 @@ texture = ExtResource("7_2xrc1")
 [node name="enemy" parent="." node_paths=PackedStringArray("camera", "player") instance=ExtResource("6_pr2oj")]
 material = SubResource("CanvasItemMaterial_meihd")
 position = Vector2(-324, -219)
+collision_mask = 7
 camera = NodePath("../Player/Camera2D2")
 player = NodePath("../Player")
 
@@ -225,6 +226,19 @@ texture = SubResource("GradientTexture2D_pnyoy")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("10_s4xth")
 
+[node name="Control2" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Green Crystal" type="Sprite2D" parent="CanvasLayer/Control2"]
+position = Vector2(1856, 64)
+scale = Vector2(0.496094, 0.496094)
+texture = ExtResource("14_lrvvh")
+
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
@@ -246,19 +260,6 @@ position = Vector2(160, 64)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("9_n1eoc")
 
-[node name="Control2" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Green Crystal" type="Sprite2D" parent="CanvasLayer/Control2"]
-position = Vector2(1856, 64)
-scale = Vector2(0.496094, 0.496094)
-texture = ExtResource("14_lrvvh")
-
 [node name="Rocket" type="Sprite2D" parent="." groups=["Rocket"]]
 position = Vector2(352, -120)
 scale = Vector2(1.54, 1.54)
@@ -273,9 +274,12 @@ collision_mask = 6
 shape = SubResource("CircleShape2D_uerxk")
 
 [node name="Label" type="Label" parent="Rocket"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "dld3lwk3lk3lkdl3"
+offset_left = -114.286
+offset_top = -10.3896
+offset_right = -15.2857
+offset_bottom = 12.6104
+theme_override_font_sizes/font_size = 9
+text = "Press E to place crystal"
 
 [connection signal="Playerhurt" from="enemy" to="CanvasLayer" method="_on_enemy_playerhurt"]
 [connection signal="body_entered" from="green crystal" to="green crystal" method="_on_body_entered"]

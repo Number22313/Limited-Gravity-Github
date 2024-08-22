@@ -7,7 +7,7 @@
 radius = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1whc"]
-size = Vector2(106.02, 15.3434)
+size = Vector2(28.4444, 10.3435)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gy1ch"]
 size = Vector2(41, 22)
@@ -34,7 +34,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="jump death" type="CollisionShape2D" parent="handle death"]
-position = Vector2(1.29289, -25.7727)
+position = Vector2(1.29289, -23.2727)
 shape = SubResource("RectangleShape2D_v1whc")
 
 [node name="Area2D" type="Area2D" parent="."]

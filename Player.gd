@@ -8,7 +8,7 @@ const JUMP_VELOCITY = -400
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jump_count = 0
 var max_jumps = 2
-var start_position = Vector2(1952, -928)
+var start_position = Vector2(-1000, -1160)
 
 func _physics_process(delta):
 	# Add the gravity.
