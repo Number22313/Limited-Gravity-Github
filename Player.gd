@@ -33,6 +33,6 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-
+	
 func _on_canvas_layer_playerdead():
-	self.global_position = Vector2(-99,0)
+	get_tree().change_scene_to_file("res://dead.tscn")

@@ -1,6 +1,7 @@
 extends CanvasLayer
 @export var health:= 3
 signal playerdead
+@export var player: CharacterBody2D
 @onready var green_crystal = $"Control2/Green Crystal"
 
 # Called when the node enters the scene tree for the first time.
@@ -8,8 +9,7 @@ signal playerdead
 	#if health == 3:
 		#$Control2/Green_Crystal.visibile = false
 func _ready():
-	await get_tree().create_timer(5).timeout
-	green_crystal.modulate = Color(1 ,1 ,1, 0.271)
+	green_crystal.modulate = Color(1 ,1 ,1, 0.133)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -21,7 +21,14 @@ func _process(delta):
 		$Control/Health3.visible = false
 	if health <= 0:
 		emit_signal("playerdead")
+	if  Global.obtained:
+		$"Control2/Green Crystal".modulate = Color(1 ,1 ,1)
 
 func _on_enemy_playerhurt():
 	health -= 1
 	print(health)
+
+
+func _on_death_pit_body_entered(body):
+
+		health = 0
