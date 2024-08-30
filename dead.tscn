@@ -14,8 +14,8 @@ fill_from = Vector2(0.5, 0.5)
 script = ExtResource("1_xetrv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(966.5, 534.699)
-scale = Vector2(30.3281, 16.8343)
+position = Vector2(962.5, 532.479)
+scale = Vector2(30.2031, 16.7649)
 texture = SubResource("GradientTexture2D_aw3os")
 
 [node name="Button" type="Button" parent="."]
