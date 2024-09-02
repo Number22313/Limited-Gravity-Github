@@ -21,14 +21,14 @@ func _process(delta):
 		$Control/Health3.visible = false
 	if health <= 0:
 		emit_signal("playerdead")
-	if  Global.obtained:
+	if  Global.green_obtained:
 		$"Control2/Green Crystal".modulate = Color(1 ,1 ,1)
+	if  Global.red_obtained:
+		$"Control2/Red Crystal".modulate = Color(1 ,1 ,1)
 
 func _on_enemy_playerhurt():
 	health -= 1
-	print(health)
 
 
 func _on_death_pit_body_entered(body):
-
-		health = 0
+	health = 0

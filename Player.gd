@@ -12,8 +12,12 @@ var start_position = Vector2(-1000, -1160)
 
 func _physics_process(delta):
 	# Add the gravity.
-	if Input.is_action_just_pressed("stuff"):
+	if Input.is_action_just_pressed("green crystal tp"):
 		self.global_position = start_position
+	if Input.is_action_just_pressed("red crystal tp"):
+		Global.red_obtained = true
+	if Input.is_action_just_pressed("tp to rocket"):
+		self.global_position = Vector2(0,0)
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta

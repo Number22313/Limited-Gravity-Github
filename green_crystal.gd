@@ -16,4 +16,4 @@ func _on_body_entered(body):
 		print("found")
 		self.queue_free()
 		camera.apply_shake(100,5)
-		Global.obtained = true
+		Global.green_obtained = true

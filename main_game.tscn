@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://xrk6d4nycsre"]
+[gd_scene load_steps=46 format=3 uid="uid://xrk6d4nycsre"]
 
 [ext_resource type="PackedScene" uid="uid://mdbkocuud6iq" path="res://player.tscn" id="1_01k2v"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="2_s8yc5"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b8grybdth3hx1" path="res://green_crystal.tscn" id="7_hjm5d"]
 [ext_resource type="Texture2D" uid="uid://bu3813ok0hx4e" path="res://Images/hearts v1.png" id="9_n1eoc"]
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="10_s4xth"]
+[ext_resource type="Texture2D" uid="uid://fatmh0ubxhux" path="res://Images/red crystal v1.png" id="13_x4rdx"]
 [ext_resource type="Texture2D" uid="uid://b6ka61tx3t2xs" path="res://Images/green crystal v2.png" id="14_lrvvh"]
 [ext_resource type="Texture2D" uid="uid://biosuce8k51rw" path="res://Images/Rocket.png" id="15_a21mm"]
 [ext_resource type="Script" path="res://Rocket.gd" id="16_f303t"]
@@ -231,7 +232,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3eg7r")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -341,6 +342,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Red Crystal" type="Sprite2D" parent="CanvasLayer/Control2"]
+modulate = Color(1, 1, 1, 0.133333)
+position = Vector2(1728, 64)
+scale = Vector2(0.496, 0.496)
+texture = ExtResource("13_x4rdx")
+
 [node name="Green Crystal" type="Sprite2D" parent="CanvasLayer/Control2"]
 modulate = Color(1, 1, 1, 0.133333)
 position = Vector2(1856, 64)
@@ -376,11 +383,12 @@ collision_mask = 2
 position = Vector2(1835, 329)
 shape = SubResource("RectangleShape2D_0wqi7")
 
-[node name="Rocket" type="Sprite2D" parent="." groups=["Rocket"]]
+[node name="Rocket" type="Sprite2D" parent="." node_paths=PackedStringArray("camera") groups=["Rocket"]]
 position = Vector2(352, -120)
 scale = Vector2(1.54, 1.54)
 texture = ExtResource("15_a21mm")
 script = ExtResource("16_f303t")
+camera = NodePath("../Player/Camera2D2")
 
 [node name="Area2D" type="Area2D" parent="Rocket"]
 collision_layer = 2
@@ -398,6 +406,7 @@ theme_override_font_sizes/font_size = 9
 text = "Press E to place crystal"
 
 [node name="Fuel container" type="AnimatedSprite2D" parent="Rocket"]
+z_index = 70
 position = Vector2(-0.0405884, 31.8994)
 scale = Vector2(0.261364, 0.261364)
 sprite_frames = SubResource("SpriteFrames_v12dg")
