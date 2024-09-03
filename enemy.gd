@@ -3,16 +3,15 @@ extends CharacterBody2D
 @export var camera:Camera2D
 var SPEED = 100
 #var GRAVITY = 1000  
-var chase: bool
 var start_position2 = Vector2(0, 0)
 @export var player: CharacterBody2D
 signal Playerhurt
 
 func _ready():
-	chase = true
+	Global.chase = true
 func _physics_process(delta):
 # Calculate direction towards player
-	if chase:
+	if Global.chase:
 		var direction = (player.global_position - global_position).normalized()
 		global_position += direction * SPEED * delta
 		var knockback = position.direction_to(player.position) * -500
@@ -27,7 +26,7 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	print("dead")
 	if body.is_in_group("player"):
-		chase = true
+		Global.chase = true
 		#camera.apply_shake(100,5)
 		emit_signal("Playerhurt")
 
@@ -35,4 +34,4 @@ func _on_area_2d_body_entered(body):
 func _on_handle_death_body_entered(body):
 	if body.is_in_group("player"):
 		self.queue_free()
-		chase = true
+		Global.chase = true
