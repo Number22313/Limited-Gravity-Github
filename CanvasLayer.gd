@@ -3,6 +3,7 @@ extends CanvasLayer
 signal playerdead
 @export var player: CharacterBody2D
 @onready var green_crystal = $"Control2/Green Crystal"
+@onready var fps_label = $FPSlabel
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -25,6 +26,7 @@ func _process(delta):
 		$"Control2/Green Crystal".modulate = Color(1 ,1 ,1)
 	if  Global.red_obtained:
 		$"Control2/Red Crystal".modulate = Color(1 ,1 ,1)
+	fps_label.text = str("FPS ", Engine.get_frames_per_second())
 
 func _on_enemy_playerhurt():
 	health -= 1
