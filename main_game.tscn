@@ -290,8 +290,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d20ac")
 }],
-"loop": true,
-"name": &"new_animation",
+"loop": false,
+"name": &"fuel_sprite_animation",
 "speed": 5.0
 }]
 
@@ -581,12 +581,11 @@ theme_override_font_sizes/font_size = 9
 text = "Press E to place crystal"
 
 [node name="Fuel container" type="AnimatedSprite2D" parent="Rocket"]
-z_index = 500
+z_index = 4096
 position = Vector2(-0.0405884, 31.8994)
 scale = Vector2(0.261364, 0.261364)
 sprite_frames = SubResource("SpriteFrames_yrwpn")
-animation = &"new_animation"
-frame_progress = 0.675417
+animation = &"fuel_sprite_animation"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Rocket"]
 position = Vector2(0.649351, 51.2987)

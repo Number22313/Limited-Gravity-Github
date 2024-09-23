@@ -7,3 +7,4 @@ var chase: bool = false
 var allowed_to_move: bool = true
 var rocket_fully_fueled: bool = false
 var fuel_animation: bool = false
+var rocket_flying = 1
