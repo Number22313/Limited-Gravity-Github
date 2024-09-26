@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8grybdth3hx1"]
 
 [ext_resource type="Script" path="res://green_crystal.gd" id="1_qvxip"]
-[ext_resource type="Texture2D" uid="uid://b6ka61tx3t2xs" path="res://Images/green crystal v2.png" id="1_y40xj"]
+[ext_resource type="Texture2D" uid="uid://fatmh0ubxhux" path="res://Images/red crystal v1.png" id="2_netol"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f1lnm"]
 radius = 64.1249
 
-[node name="green crystal" type="Area2D"]
+[node name="red_crystal" type="Area2D"]
 script = ExtResource("1_qvxip")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -15,4 +15,4 @@ shape = SubResource("CircleShape2D_f1lnm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 17)
-texture = ExtResource("1_y40xj")
+texture = ExtResource("2_netol")

@@ -5,6 +5,8 @@ var crystal_count = 0
 @onready var fuel_container = $"Fuel container"
 var speed: float = -10.0
 # Called when the node enters the scene tree for the first time.
+signal max_limit
+
 func _ready():
 	label.visible = true
 	$CPUParticles2D.emitting = false
@@ -16,18 +18,17 @@ func _process(delta):
 			Global.rocket_fully_fueled = true
 			$"Fuel container".play("fuel_sprite_animation")
 			Global.rocket_flying += 1
-		
+				
 		fuel_container.visible = true
 		print(Global.fuel_animation)
-		
-		if self.position.y >= -6000:
 		
 		if Global.rocket_fueled == true:
 			Global.player_visible = 2
 			Global.allowed_to_move = false
 		
 		if Global.allowed_to_move == false:
-			self.position.y += speed
+			self.position.y += speed #currently flying\
+		
 		
 		if Global.rocket_flying == 2:
 			await get_tree().create_timer(4).timeout

@@ -15,11 +15,5 @@ func _on_body_entered(body):
 		print("found")
 		self.queue_free()
 		camera.apply_shake(100,5)
-		Global.green_obtained = true
+		Global.red_obtained = true
 		
-#func _on_body_entered(body):
-	#if body.is_in_group("player"):
-		#print("found")
-		#self.queue_free()
-		#camera.apply_shake(100,5)
-		#Global.red_obtained = true

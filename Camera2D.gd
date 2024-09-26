@@ -2,14 +2,15 @@ extends Camera2D
 
 @export var default_random_strength: float = 100.0
 @export var default_shake_fade: float = 5.0
+@export var player: CharacterBody2D
 
+var following: bool = true
 @onready var shake_active: bool = false
 var rng = RandomNumberGenerator.new()
 
 var shake_strength: float = 0.0
 var shake_fade: float = 0.0
 
-@export var target : CharacterBody2D
 @export var sensitivity := 0.1
 
 # This function will be called with different shake parameters
@@ -28,7 +29,11 @@ func _process(delta):
 	else:
 		shake_active = false
 		offset = Vector2.ZERO  # Reset offset when shake is done
-
+	if following:
+		position = player.global_position
+	
+	if position.y <= -4000:
+		following = false
 
 func random_offset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength, shake_strength), rng.randf_range(-shake_strength, shake_strength))

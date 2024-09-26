@@ -27,6 +27,10 @@ func _process(delta):
 	if  Global.red_obtained:
 		$"Control2/Red Crystal".modulate = Color(1 ,1 ,1)
 	fps_label.text = str("FPS ", Engine.get_frames_per_second())
+	
+	if Global.rocket_flying == 2:
+		await get_tree().create_timer(4).timeout
+		self.visible = false
 
 func _on_enemy_playerhurt():
 	health -= 1
