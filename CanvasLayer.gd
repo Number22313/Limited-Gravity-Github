@@ -38,3 +38,7 @@ func _on_enemy_playerhurt():
 
 func _on_death_pit_body_entered(body):
 	health = 0
+
+
+func _on_enemy_2_playerhurt():
+	pass # Replace with function body.

@@ -27,7 +27,7 @@ func _on_area_2d_body_entered(body):
 	print("dead")
 	if body.is_in_group("player"):
 		Global.chase = true
-		#camera.apply_shake(100,5)
+		camera.apply_shake(100,5)
 		emit_signal("Playerhurt")
 
 

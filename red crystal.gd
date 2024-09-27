@@ -12,8 +12,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		print("found")
+		print("foundred")
 		self.queue_free()
 		camera.apply_shake(100,5)
 		Global.red_obtained = true
-		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://xrk6d4nycsre"]
+[gd_scene load_steps=64 format=3 uid="uid://xrk6d4nycsre"]
 
 [ext_resource type="PackedScene" uid="uid://mdbkocuud6iq" path="res://player.tscn" id="1_01k2v"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="2_s8yc5"]
@@ -126,16 +126,11 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_gltg1"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 5
-physics_layer_0/collision_mask = 5
+physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_wt648")
 sources/5 = SubResource("TileSetAtlasSource_te8wv")
 sources/0 = SubResource("TileSetAtlasSource_boi3t")
 sources/2 = SubResource("TileSetAtlasSource_48o03")
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_meihd"]
-blend_mode = 1
-light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xno8t"]
 blend_mode = 1
@@ -308,8 +303,8 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.22, 0.733333, 1)
 colors = PackedColorArray(1, 0.211765, 0, 1, 1, 0.298039, 0, 1, 1, 0.827451, 0.447059, 1, 1, 1, 0, 0.270588)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_37l30"]
-size = Vector2(20, 1560)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q1d1"]
+size = Vector2(20, 307)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q2wfl"]
 texture = ExtResource("23_olvp3")
@@ -386,7 +381,7 @@ position = Vector2(0, 8)
 
 [node name="Player" parent="." instance=ExtResource("1_01k2v")]
 z_index = 99
-collision_layer = 6
+collision_mask = 69
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
 z_index = 90
@@ -456,33 +451,12 @@ position = Vector2(292, -182.054)
 scale = Vector2(2.288, 1.03178)
 texture = ExtResource("12_it2m2")
 
-[node name="enemy" parent="." node_paths=PackedStringArray("camera", "player") instance=ExtResource("6_pr2oj")]
-material = SubResource("CanvasItemMaterial_meihd")
-position = Vector2(-401, -212)
-collision_mask = 39
-camera = NodePath("../Camera2D2")
-player = NodePath("../Player")
-
-[node name="enemy2" parent="." node_paths=PackedStringArray("camera", "player") instance=ExtResource("6_pr2oj")]
-material = SubResource("CanvasItemMaterial_meihd")
-position = Vector2(-560, -408)
-collision_mask = 39
-camera = NodePath("../Camera2D2")
-player = NodePath("../Player")
-
-[node name="enemy3" parent="." node_paths=PackedStringArray("camera", "player") instance=ExtResource("6_pr2oj")]
-material = SubResource("CanvasItemMaterial_meihd")
-position = Vector2(-1136, -776)
-collision_mask = 39
-camera = NodePath("../Camera2D2")
-player = NodePath("../Player")
-
 [node name="green crystal" type="Area2D" parent="." node_paths=PackedStringArray("camera")]
 z_index = -1
 material = SubResource("CanvasItemMaterial_xno8t")
 position = Vector2(-1113, -1183)
-collision_layer = 4
-collision_mask = 4
+collision_layer = 64
+collision_mask = 2
 script = ExtResource("13_r8e6x")
 camera = NodePath("../Camera2D2")
 
@@ -503,13 +477,14 @@ energy = 10.0
 shadow_color = Color(0, 1, 0, 1)
 texture = SubResource("GradientTexture2D_pnyoy")
 
-[node name="red crystal" type="Area2D" parent="."]
+[node name="red crystal" type="Area2D" parent="." node_paths=PackedStringArray("camera")]
 z_index = 100
 material = SubResource("CanvasItemMaterial_xno8t")
 position = Vector2(2487, -963)
-collision_layer = 4
-collision_mask = 4
+collision_layer = 64
+collision_mask = 2
 script = ExtResource("15_l73dk")
+camera = NodePath("../Camera2D2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="red crystal"]
 position = Vector2(-8, -3)
@@ -639,13 +614,14 @@ color_ramp = SubResource("Gradient_q06jd")
 
 [node name="Sprite2D" type="Sprite2D" parent="BOSS"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 32
-collision_mask = 2
+[node name="EnemyOnlyCollision" type="StaticBody2D" parent="."]
+position = Vector2(-325, -13)
+collision_layer = 128
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-287, -735)
-shape = SubResource("RectangleShape2D_37l30")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyOnlyCollision"]
+position = Vector2(0, -97.5)
+shape = SubResource("RectangleShape2D_2q1d1")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.683077, 0.683077, 0.683077, 1)
@@ -654,6 +630,7 @@ color = Color(0.683077, 0.683077, 0.683077, 1)
 position = Vector2(1901, -1568)
 scale = Vector2(7.675, 7.675)
 texture = ExtResource("22_r8dmp")
+metadata/_edit_lock_ = true
 
 [node name="RedAreaBackground2" type="Sprite2D" parent="."]
 position = Vector2(2040, -217)
@@ -681,12 +658,12 @@ offset_left = -57.0
 offset_top = -4081.0
 offset_right = 817.0
 offset_bottom = -961.0
-theme_override_constants/separation = 1500
+theme_override_constants/separation = 0
 
 [node name="Finish text" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("24_mh0j2")
-text = "You won GG"
+text = "You won, thanks for playing"
 horizontal_alignment = 1
 
 [node name="Credit text" type="Label" parent="VBoxContainer"]
@@ -695,12 +672,33 @@ theme = ExtResource("24_mh0j2")
 text = "MASSIVE CREDIT TO FLAMEBAMBOO FOR FEEDBACK"
 horizontal_alignment = 1
 
-[connection signal="Playerhurt" from="enemy" to="CanvasLayer" method="_on_enemy_playerhurt"]
-[connection signal="Playerhurt" from="enemy2" to="CanvasLayer" method="_on_enemy_playerhurt"]
-[connection signal="Playerhurt" from="enemy3" to="CanvasLayer" method="_on_enemy_playerhurt"]
+[node name="enemy" parent="." node_paths=PackedStringArray("camera", "player") instance=ExtResource("6_pr2oj")]
+position = Vector2(2143, -1352)
+camera = NodePath("../Camera2D2")
+player = NodePath("../Player")
+
+[node name="enemy2" parent="." node_paths=PackedStringArray("camera", "player") instance=ExtResource("6_pr2oj")]
+position = Vector2(2096, -209)
+camera = NodePath("../Camera2D2")
+player = NodePath("../Player")
+
+[node name="enemy3" parent="." node_paths=PackedStringArray("camera", "player") instance=ExtResource("6_pr2oj")]
+position = Vector2(-641, -187)
+camera = NodePath("../Camera2D2")
+player = NodePath("../Player")
+
+[node name="enemy4" parent="." node_paths=PackedStringArray("camera", "player") instance=ExtResource("6_pr2oj")]
+position = Vector2(-975, -1234)
+camera = NodePath("../Camera2D2")
+player = NodePath("../Player")
+
 [connection signal="body_entered" from="green crystal" to="green crystal" method="_on_body_entered"]
 [connection signal="body_entered" from="red crystal" to="red crystal" method="_on_body_entered"]
 [connection signal="playerdead" from="CanvasLayer" to="Player" method="_on_canvas_layer_playerdead"]
 [connection signal="body_entered" from="CanvasLayer/death pit" to="CanvasLayer" method="_on_death_pit_body_entered"]
 [connection signal="body_entered" from="Rocket/Area2D" to="Rocket" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Rocket/Area2D" to="Rocket" method="_on_area_2d_body_exited"]
+[connection signal="Playerhurt" from="enemy" to="CanvasLayer" method="_on_enemy_playerhurt"]
+[connection signal="Playerhurt" from="enemy2" to="CanvasLayer" method="_on_enemy_playerhurt"]
+[connection signal="Playerhurt" from="enemy3" to="CanvasLayer" method="_on_enemy_playerhurt"]
+[connection signal="Playerhurt" from="enemy4" to="CanvasLayer" method="_on_enemy_playerhurt"]
